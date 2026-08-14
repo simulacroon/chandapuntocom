@@ -929,3 +929,392 @@ window.addEventListener(
 ========================================================= */
 
 updateShopScroll();
+
+
+/* =========================================================
+   INTERACTIVE LETTERING
+========================================================= */
+
+const letteringCanvas =
+    document.getElementById(
+        "letteringCanvas"
+    );
+
+
+if (letteringCanvas) {
+
+    const letteringCtx =
+        letteringCanvas.getContext("2d");
+
+
+    let letteringWidth =
+        window.innerWidth;
+
+
+    let letteringHeight =
+        window.innerHeight;
+
+
+    let letters = [];
+
+
+    let mouseX =
+        letteringWidth / 2;
+
+
+    let mouseY =
+        letteringHeight / 2;
+
+
+    let previousMouseX =
+        mouseX;
+
+
+    let previousMouseY =
+        mouseY;
+
+
+    let letterIndex = 0;
+
+
+    const lettering =
+        "CHANDAPUNTOCOM";
+
+
+    /* =====================================================
+       RESIZE
+    ===================================================== */
+
+    function resizeLettering() {
+
+        const ratio =
+            window.devicePixelRatio || 1;
+
+
+        letteringWidth =
+            letteringCanvas.clientWidth;
+
+
+        letteringHeight =
+            letteringCanvas.clientHeight;
+
+
+        letteringCanvas.width =
+            letteringWidth * ratio;
+
+
+        letteringCanvas.height =
+            letteringHeight * ratio;
+
+
+        letteringCtx.setTransform(
+            ratio,
+            0,
+            0,
+            ratio,
+            0,
+            0
+        );
+    }
+
+
+    resizeLettering();
+
+
+    window.addEventListener(
+        "resize",
+        resizeLettering
+    );
+
+
+    /* =====================================================
+       MOUSE
+    ===================================================== */
+
+    letteringCanvas.addEventListener(
+        "mousemove",
+        (event) => {
+
+            const rect =
+                letteringCanvas.getBoundingClientRect();
+
+
+            mouseX =
+                event.clientX -
+                rect.left;
+
+
+            mouseY =
+                event.clientY -
+                rect.top;
+
+
+            const dx =
+                mouseX -
+                previousMouseX;
+
+
+            const dy =
+                mouseY -
+                previousMouseY;
+
+
+            const distance =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
+
+            /*
+             * Solo creamos letras cuando
+             * realmente existe movimiento.
+             */
+
+            if (distance > 8) {
+
+                createLetter(
+                    mouseX,
+                    mouseY,
+                    dx,
+                    dy,
+                    distance
+                );
+
+            }
+
+
+            previousMouseX =
+                mouseX;
+
+
+            previousMouseY =
+                mouseY;
+
+        }
+    );
+
+
+    /* =====================================================
+       CREATE LETTER
+    ===================================================== */
+
+    function createLetter(
+        x,
+        y,
+        dx,
+        dy,
+        distance
+    ) {
+
+        const character =
+            lettering[
+                letterIndex %
+                lettering.length
+            ];
+
+
+        letterIndex++;
+
+
+        /*
+         * Dirección del movimiento.
+         */
+
+        const angle =
+            Math.atan2(
+                dy,
+                dx
+            );
+
+
+        /*
+         * Tamaño ligeramente variable.
+         */
+
+        const size =
+            28 +
+            Math.random() * 35;
+
+
+        letters.push({
+
+            character,
+
+            x,
+            y,
+
+            angle,
+
+            size,
+
+            opacity: 1,
+
+            life:
+                1,
+
+            rotation:
+                angle +
+                (
+                    Math.random() -
+                    0.5
+                ) *
+                0.5
+
+        });
+
+
+        /*
+         * Evitamos que se acumulen
+         * infinitamente.
+         */
+
+        if (letters.length > 180) {
+
+            letters.shift();
+
+        }
+
+    }
+
+
+    /* =====================================================
+       DRAW
+    ===================================================== */
+
+    function drawLettering() {
+
+        letteringCtx.clearRect(
+            0,
+            0,
+            letteringWidth,
+            letteringHeight
+        );
+
+
+        for (
+            let i = letters.length - 1;
+            i >= 0;
+            i--
+        ) {
+
+            const letter =
+                letters[i];
+
+
+            /*
+             * Desaparición lenta.
+             */
+
+            letter.life -= 0.006;
+
+
+            letter.opacity =
+                Math.max(
+                    0,
+                    letter.life
+                );
+
+
+            /*
+             * Pequeño desplazamiento
+             * en la dirección del movimiento.
+             */
+
+            letter.x +=
+                Math.cos(
+                    letter.angle
+                ) *
+                0.15;
+
+
+            letter.y +=
+                Math.sin(
+                    letter.angle
+                ) *
+                0.15;
+
+
+            /*
+             * Eliminamos letras
+             * completamente transparentes.
+             */
+
+            if (
+                letter.life <= 0
+            ) {
+
+                letters.splice(
+                    i,
+                    1
+                );
+
+                continue;
+
+            }
+
+
+            /* =================================================
+               DRAW LETTER
+            ================================================= */
+
+            letteringCtx.save();
+
+
+            letteringCtx.translate(
+                letter.x,
+                letter.y
+            );
+
+
+            letteringCtx.rotate(
+                letter.rotation
+            );
+
+
+            letteringCtx.globalAlpha =
+                letter.opacity;
+
+
+            letteringCtx.fillStyle =
+                "#f4f4f4";
+
+
+            letteringCtx.font =
+                `
+                ${letter.size}px
+                "Times New Roman",
+                serif
+                `;
+
+
+            letteringCtx.textAlign =
+                "center";
+
+
+            letteringCtx.textBaseline =
+                "middle";
+
+
+            letteringCtx.fillText(
+                letter.character,
+                0,
+                0
+            );
+
+
+            letteringCtx.restore();
+
+        }
+
+
+        requestAnimationFrame(
+            drawLettering
+        );
+
+    }
+
+
+    drawLettering();
+
+}
