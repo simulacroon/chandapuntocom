@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Shop | CHANDAPUNTOCOM</title>
-  <meta name="description" content="Piezas disponibles de CHANDAPUNTOCOM." />
+
+  <meta
+    name="description"
+    content="Piezas y accesorios de CHANDAPUNTOCOM."
+  />
+
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
 </head>
+
+
 <body>
+
+  <!-- =========================
+       NAV
+  ========================== -->
+
   <header class="site-header">
+
     <div class="nav-left">
       <a href="index.html" class="logo">
         CHANDA
@@ -20,125 +40,691 @@
     </div>
 
     <nav class="main-navigation">
-      <a href="index.html#shop">SHOP</a>
-      <a href="index.html#proceso">PROCESO</a>
-      <a href="index.html#contacto">CONTACTO</a>
+
+      <a href="index.html#shop">
+        SHOP
+      </a>
+
+      <a href="index.html#proceso">
+        PROCESO
+      </a>
+
+      <a href="index.html#contacto">
+        CONTACTO
+      </a>
+
     </nav>
 
     <div class="nav-right">
-      <button class="menu-button" id="menu-button" aria-label="Abrir menú">
+
+      <!-- CARRO -->
+      <button
+        class="cart-button"
+        id="cart-button"
+        aria-label="Abrir carrito"
+      >
+        CART
+        <span id="cart-count">0</span>
+      </button>
+
+      <!-- MOBILE -->
+      <button
+        class="menu-button"
+        id="menu-button"
+        aria-label="Abrir menú"
+      >
         <span></span>
         <span></span>
       </button>
+
     </div>
+
   </header>
 
+
+  <!-- =========================
+       MOBILE MENU
+  ========================== -->
+
   <div class="mobile-menu" id="mobile-menu">
-    <button class="mobile-menu-close" id="mobile-menu-close">×</button>
+
+    <button
+      class="mobile-menu-close"
+      id="mobile-menu-close"
+    >
+      ×
+    </button>
+
     <nav>
-      <a href="index.html#shop">SHOP</a>
-      <a href="index.html#proceso">PROCESO</a>
-      <a href="index.html#material">MATERIAL</a>
-      <a href="index.html#contacto">CONTACTO</a>
+
+      <a href="index.html#shop">
+        SHOP
+      </a>
+
+      <a href="index.html#proceso">
+        PROCESO
+      </a>
+
+      <a href="index.html#material">
+        MATERIAL
+      </a>
+
+      <a href="index.html#contacto">
+        CONTACTO
+      </a>
+
+      <button id="mobile-cart-button">
+        CART
+      </button>
+
     </nav>
+
   </div>
 
+
+
+  <!-- =========================
+       SHOP
+  ========================== -->
+
   <main class="shop-page">
-    <header class="page-header">
-      <div>
-        <p class="eyebrow">SHOP</p>
-        <h1>PIEZAS DISPONIBLES</h1>
+
+
+    <!-- =========================
+         HERO VIDEO
+    ========================== -->
+
+    <section class="shop-hero">
+
+      <video
+        class="shop-hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      >
+
+        <source
+          src="assets/video/shop.mp4"
+          type="video/mp4"
+        />
+
+      </video>
+
+
+      <div class="shop-hero-overlay">
+
+        <p class="eyebrow">
+          CHANDAPUNTOCOM
+        </p>
+
+        <h1>
+          SHOP
+        </h1>
+
+        <p class="shop-hero-description">
+          OBJETOS / ACCESORIOS / PIEZAS
+        </p>
+
       </div>
-      <a href="index.html" class="shop-link">← VOLVER</a>
-    </header>
 
-    <section class="shop-list">
-      <article class="product-card">
-        <a href="producto.html">
-          <div class="product-image">
-            <img src="assets/images/product-01.svg" alt="Pieza 01" />
-            <div class="product-hover">VER PIEZA</div>
-          </div>
-          <div class="product-info">
-            <h3>PIEZA 01</h3>
-            <p>$000.000 COP</p>
-          </div>
-        </a>
-      </article>
 
-      <article class="product-card">
-        <a href="producto.html">
-          <div class="product-image">
-            <img src="assets/images/product-02.svg" alt="Pieza 02" />
-            <div class="product-hover">VER PIEZA</div>
-          </div>
-          <div class="product-info">
-            <h3>PIEZA 02</h3>
-            <p>$000.000 COP</p>
-          </div>
-        </a>
-      </article>
+      <div class="shop-hero-bottom">
 
-      <article class="product-card">
-        <a href="producto.html">
-          <div class="product-image">
-            <img src="assets/images/product-03.svg" alt="Pieza 03" />
-            <div class="product-hover">VER PIEZA</div>
-          </div>
-          <div class="product-info">
-            <h3>PIEZA 03</h3>
-            <p>$000.000 COP</p>
-          </div>
-        </a>
-      </article>
+        <span>
+          SCROLL TO EXPLORE
+        </span>
 
-      <article class="product-card">
-        <a href="producto.html">
-          <div class="product-image">
-            <img src="assets/images/product-04.svg" alt="Pieza 04" />
-            <div class="product-hover">VER PIEZA</div>
-          </div>
-          <div class="product-info">
-            <h3>PIEZA 04</h3>
-            <p>$000.000 COP</p>
-          </div>
-        </a>
-      </article>
+        <span>
+          ↓
+        </span>
 
-      <article class="product-card">
-        <a href="producto.html">
-          <div class="product-image">
-            <img src="assets/images/process-01.svg" alt="Pieza 05" />
-            <div class="product-hover">VER PIEZA</div>
-          </div>
-          <div class="product-info">
-            <h3>PIEZA 05</h3>
-            <p>$000.000 COP</p>
-          </div>
-        </a>
-      </article>
+      </div>
 
-      <article class="product-card">
-        <a href="producto.html">
-          <div class="product-image">
-            <img src="assets/images/process-02.svg" alt="Pieza 06" />
-            <div class="product-hover">VER PIEZA</div>
-          </div>
-          <div class="product-info">
-            <h3>PIEZA 06</h3>
-            <p>$000.000 COP</p>
-          </div>
-        </a>
-      </article>
     </section>
+
+
+
+    <!-- =========================
+         INTRO
+    ========================== -->
+
+    <section class="shop-intro">
+
+      <div class="shop-intro-number">
+        01
+      </div>
+
+      <div class="shop-intro-content">
+
+        <p class="eyebrow">
+          COLECCIÓN
+        </p>
+
+        <h2>
+          PIEZAS
+        </h2>
+
+        <p>
+          Objetos construidos manualmente,
+          explorando la materia, el metal
+          y sus transformaciones.
+        </p>
+
+      </div>
+
+      <div class="shop-intro-side">
+        CHANDA<br>
+        PUNTOCOM
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PRODUCTOS
+    ========================== -->
+
+    <section class="shop-products" id="productos">
+
+      <div class="shop-products-header">
+
+        <div>
+          <span class="eyebrow">
+            02 / COLLECTION
+          </span>
+
+          <h2>
+            OBJETOS
+          </h2>
+        </div>
+
+        <span>
+          <span id="product-count">06</span>
+          PIEZAS
+        </span>
+
+      </div>
+
+
+
+      <!-- PRODUCTO 01 -->
+
+      <article
+        class="product-card"
+        data-product-id="01"
+        data-product-name="PIEZA 01"
+        data-product-price="120000"
+      >
+
+        <a href="producto.html?id=01">
+
+          <div class="product-image">
+
+            <img
+              src="assets/images/product-01.svg"
+              alt="Pieza 01"
+              loading="lazy"
+            />
+
+            <div class="product-hover">
+              VER PIEZA →
+            </div>
+
+          </div>
+
+        </a>
+
+        <div class="product-info">
+
+          <div>
+            <h3>
+              PIEZA 01
+            </h3>
+
+            <p>
+              ACCESORIO
+            </p>
+          </div>
+
+          <div class="product-price">
+            $120.000 COP
+          </div>
+
+        </div>
+
+        <button
+          class="add-to-cart"
+          data-product-id="01"
+        >
+          AGREGAR AL CARRITO
+        </button>
+
+      </article>
+
+
+
+      <!-- PRODUCTO 02 -->
+
+      <article
+        class="product-card"
+        data-product-id="02"
+        data-product-name="PIEZA 02"
+        data-product-price="140000"
+      >
+
+        <a href="producto.html?id=02">
+
+          <div class="product-image">
+
+            <img
+              src="assets/images/product-02.svg"
+              alt="Pieza 02"
+              loading="lazy"
+            />
+
+            <div class="product-hover">
+              VER PIEZA →
+            </div>
+
+          </div>
+
+        </a>
+
+        <div class="product-info">
+
+          <div>
+            <h3>
+              PIEZA 02
+            </h3>
+
+            <p>
+              ACCESORIO
+            </p>
+          </div>
+
+          <div class="product-price">
+            $140.000 COP
+          </div>
+
+        </div>
+
+        <button
+          class="add-to-cart"
+          data-product-id="02"
+        >
+          AGREGAR AL CARRITO
+        </button>
+
+      </article>
+
+
+
+      <!-- PRODUCTO 03 -->
+
+      <article
+        class="product-card"
+        data-product-id="03"
+        data-product-name="PIEZA 03"
+        data-product-price="160000"
+      >
+
+        <a href="producto.html?id=03">
+
+          <div class="product-image">
+
+            <img
+              src="assets/images/product-03.svg"
+              alt="Pieza 03"
+              loading="lazy"
+            />
+
+            <div class="product-hover">
+              VER PIEZA →
+            </div>
+
+          </div>
+
+        </a>
+
+        <div class="product-info">
+
+          <div>
+            <h3>
+              PIEZA 03
+            </h3>
+
+            <p>
+              ACCESORIO
+            </p>
+          </div>
+
+          <div class="product-price">
+            $160.000 COP
+          </div>
+
+        </div>
+
+        <button
+          class="add-to-cart"
+          data-product-id="03"
+        >
+          AGREGAR AL CARRITO
+        </button>
+
+      </article>
+
+
+
+      <!-- PRODUCTO 04 -->
+
+      <article
+        class="product-card"
+        data-product-id="04"
+        data-product-name="PIEZA 04"
+        data-product-price="180000"
+      >
+
+        <a href="producto.html?id=04">
+
+          <div class="product-image">
+
+            <img
+              src="assets/images/product-04.svg"
+              alt="Pieza 04"
+              loading="lazy"
+            />
+
+            <div class="product-hover">
+              VER PIEZA →
+            </div>
+
+          </div>
+
+        </a>
+
+        <div class="product-info">
+
+          <div>
+            <h3>
+              PIEZA 04
+            </h3>
+
+            <p>
+              ACCESORIO
+            </p>
+          </div>
+
+          <div class="product-price">
+            $180.000 COP
+          </div>
+
+        </div>
+
+        <button
+          class="add-to-cart"
+          data-product-id="04"
+        >
+          AGREGAR AL CARRITO
+        </button>
+
+      </article>
+
+
+
+      <!-- PRODUCTO 05 -->
+
+      <article
+        class="product-card"
+        data-product-id="05"
+        data-product-name="PIEZA 05"
+        data-product-price="200000"
+      >
+
+        <a href="producto.html?id=05">
+
+          <div class="product-image">
+
+            <img
+              src="assets/images/process-01.svg"
+              alt="Pieza 05"
+              loading="lazy"
+            />
+
+            <div class="product-hover">
+              VER PIEZA →
+            </div>
+
+          </div>
+
+        </a>
+
+        <div class="product-info">
+
+          <div>
+            <h3>
+              PIEZA 05
+            </h3>
+
+            <p>
+              ACCESORIO
+            </p>
+          </div>
+
+          <div class="product-price">
+            $200.000 COP
+          </div>
+
+        </div>
+
+        <button
+          class="add-to-cart"
+          data-product-id="05"
+        >
+          AGREGAR AL CARRITO
+        </button>
+
+      </article>
+
+
+
+      <!-- PRODUCTO 06 -->
+
+      <article
+        class="product-card"
+        data-product-id="06"
+        data-product-name="PIEZA 06"
+        data-product-price="220000"
+      >
+
+        <a href="producto.html?id=06">
+
+          <div class="product-image">
+
+            <img
+              src="assets/images/process-02.svg"
+              alt="Pieza 06"
+              loading="lazy"
+            />
+
+            <div class="product-hover">
+              VER PIEZA →
+            </div>
+
+          </div>
+
+        </a>
+
+        <div class="product-info">
+
+          <div>
+            <h3>
+              PIEZA 06
+            </h3>
+
+            <p>
+              ACCESORIO
+            </p>
+          </div>
+
+          <div class="product-price">
+            $220.000 COP
+          </div>
+
+        </div>
+
+        <button
+          class="add-to-cart"
+          data-product-id="06"
+        >
+          AGREGAR AL CARRITO
+        </button>
+
+      </article>
+
+    </section>
+
+
+
+    <!-- =========================
+         INFORMACIÓN
+    ========================== -->
+
+    <section class="shop-information">
+
+      <div>
+        <span class="eyebrow">
+          03 / INFORMATION
+        </span>
+
+        <h2>
+          CADA PIEZA<br>
+          ES DIFERENTE.
+        </h2>
+      </div>
+
+      <div class="shop-information-text">
+
+        <p>
+          Las piezas son producidas en pequeñas
+          cantidades y trabajadas manualmente.
+        </p>
+
+        <p>
+          Consulta disponibilidad, materiales,
+          tiempos de producción y envíos
+          en la ficha de cada objeto.
+        </p>
+
+      </div>
+
+    </section>
+
+
+
   </main>
 
+
+
+  <!-- =========================
+       CART
+  ========================== -->
+
+  <aside
+    class="cart-drawer"
+    id="cart-drawer"
+    aria-hidden="true"
+  >
+
+    <div class="cart-header">
+
+      <h2>
+        CARRITO
+      </h2>
+
+      <button
+        id="cart-close"
+        aria-label="Cerrar carrito"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div
+      class="cart-items"
+      id="cart-items"
+    >
+
+      <!-- JS INSERTARÁ LOS PRODUCTOS -->
+
+    </div>
+
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+
+        <span>
+          TOTAL
+        </span>
+
+        <strong id="cart-total">
+          $0 COP
+        </strong>
+
+      </div>
+
+      <button
+        class="checkout-button"
+        id="checkout-button"
+      >
+        CONTINUAR AL PAGO →
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- OVERLAY -->
+
+  <div
+    class="cart-overlay"
+    id="cart-overlay"
+  ></div>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
   <footer class="site-footer">
-    <div>© 2026 CHANDAPUNTOCOM</div>
-    <div>HECHO EN COLOMBIA</div>
-    <div><a href="index.html#top">↑ VOLVER ARRIBA</a></div>
+
+    <div>
+      © 2026 CHANDAPUNTOCOM
+    </div>
+
+    <div>
+      HECHO EN COLOMBIA
+    </div>
+
+    <div>
+      <a href="#">
+        ↑ VOLVER ARRIBA
+      </a>
+    </div>
+
   </footer>
 
+
+
   <script src="script.js"></script>
+
 </body>
+
 </html>
