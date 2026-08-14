@@ -1,0 +1,1239 @@
+/* =========================================================
+   CHANDAPUNTOCOM
+   GLOBAL
+========================================================= */
+
+:root {
+
+    --black: #111111;
+
+    --white: #f4f2ec;
+
+    --cream: #e9e7df;
+
+    --serif:
+        "Times New Roman",
+        Times,
+        serif;
+
+    --mono:
+        "Arial",
+        Helvetica,
+        sans-serif;
+
+}
+
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: auto;
+
+}
+
+
+body {
+
+    background: var(--cream);
+
+    color: var(--black);
+
+    overflow-x: hidden;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+button,
+input {
+
+    font: inherit;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100vh;
+
+    min-height: 650px;
+
+    overflow: hidden;
+
+    background: #111;
+
+}
+
+
+.hero-video {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+.hero-video video {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+}
+
+
+/* =========================================================
+   HERO OVERLAY
+========================================================= */
+
+.hero-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    color: white;
+
+}
+
+
+/* =========================================================
+   NAV
+========================================================= */
+
+.hero-nav {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 70px;
+
+    padding:
+        19px
+        16px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        auto
+        1fr;
+
+    align-items: start;
+
+    z-index: 20;
+
+}
+
+
+.nav-left {
+
+    display: flex;
+
+    gap: 26px;
+
+}
+
+
+.nav-right {
+
+    justify-self: end;
+
+    display: flex;
+
+    gap: 25px;
+
+}
+
+
+.nav-left a,
+.nav-right a {
+
+    font-family: var(--serif);
+
+    font-size: 12px;
+
+    line-height: 1;
+
+    color: white;
+
+    text-shadow:
+        0 1px 7px
+        rgba(0, 0, 0, .45);
+
+}
+
+
+.nav-left a:hover,
+.nav-right a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+.logo {
+
+    color: white;
+
+    font-family: var(--serif);
+
+    font-size: 27px;
+
+    font-weight: bold;
+
+    letter-spacing: -.06em;
+
+    line-height: .85;
+
+    white-space: nowrap;
+
+    text-shadow:
+        0 1px 8px
+        rgba(0, 0, 0, .45);
+
+}
+
+
+/* =========================================================
+   GRID HERO
+========================================================= */
+
+.grid-lines {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+}
+
+
+.grid-lines span {
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 1px;
+
+    background:
+        rgba(255, 255, 255, .14);
+
+}
+
+
+.grid-lines span:nth-child(1) {
+
+    left: 33.333%;
+
+}
+
+
+.grid-lines span:nth-child(2) {
+
+    left: 66.666%;
+
+}
+
+
+/* =========================================================
+   SIDE NUMBERS
+========================================================= */
+
+.side-number {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+    line-height: 1;
+
+    z-index: 10;
+
+}
+
+
+.side-number.left {
+
+    left: 9%;
+
+}
+
+
+.side-number.right {
+
+    right: 9%;
+
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero-title {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 13%;
+
+    transform:
+        translateX(-50%);
+
+    text-align: center;
+
+    z-index: 10;
+
+}
+
+
+.hero-title p {
+
+    margin-bottom: 16px;
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    letter-spacing: .08em;
+
+}
+
+
+.hero-title h1 {
+
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            75px,
+            9vw,
+            150px
+        );
+
+    font-weight: 400;
+
+    line-height: .76;
+
+    letter-spacing: -.07em;
+
+}
+
+
+/* =========================================================
+   SCROLL INDICATOR
+========================================================= */
+
+.scroll-indicator {
+
+    position: absolute;
+
+    left: 16px;
+
+    right: 16px;
+
+    bottom: 16px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    z-index: 10;
+
+}
+
+
+/* =========================================================
+   MATERIAL SECTION
+========================================================= */
+
+.material-section {
+
+    position: relative;
+
+    height: 400vh;
+
+    background: var(--cream);
+
+}
+
+
+/* =========================================================
+   STICKY STAGE
+========================================================= */
+
+.material-stage {
+
+    position: sticky;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100vh;
+
+    min-height: 650px;
+
+    overflow: hidden;
+
+    
+    z-index: 1;
+
+}
+
+
+
+/* =========================================================
+   MATERIAL GRID
+========================================================= */
+
+.material-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+}
+
+
+.material-grid span {
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 1px;
+
+    background:
+        rgba(20, 20, 20, .12);
+
+}
+
+
+.material-grid span:nth-child(1) {
+
+    left: 33.333%;
+
+}
+
+
+.material-grid span:nth-child(2) {
+
+    left: 66.666%;
+
+}
+
+
+/* =========================================================
+   MATERIAL NUMBERS
+========================================================= */
+
+.material-number-left {
+
+    left: 9%;
+
+    color: var(--black);
+
+}
+
+
+.material-number-right {
+
+    right: 9%;
+
+    color: var(--black);
+
+}
+
+
+/* =========================================================
+   MATERIAL VIDEOS
+========================================================= */
+
+.material-video {
+
+    position: absolute;
+
+    left: 50%;
+
+    top: 50%;
+
+    overflow: hidden;
+
+    background: #111;
+
+    transform:
+        translate(-50%, -50%);
+
+    will-change:
+        width,
+        height,
+        transform,
+        opacity;
+
+}
+
+
+.material-video video {
+
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+}
+
+
+/* =========================================================
+   VIDEO 01
+   CUADRADO
+========================================================= */
+
+.material-video-1 {
+
+    width: 360px;
+
+    height: 360px;
+
+    z-index: 3;
+
+    opacity: 1;
+
+}
+
+
+/* =========================================================
+   VIDEO 02
+   RECTANGULAR
+========================================================= */
+
+.material-video-2 {
+
+    width: 440px;
+
+    height: 270px;
+
+    z-index: 4;
+
+    opacity: 0;
+
+}
+
+
+/* =========================================================
+   VIDEO 03
+========================================================= */
+
+.material-video-3 {
+
+    width: 340px;
+
+    height: 210px;
+
+    z-index: 5;
+
+    opacity: 0;
+
+}
+
+
+/* =========================================================
+   MATERIAL INFORMATION
+========================================================= */
+
+.material-info {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 10%;
+
+    width: min(500px, 80vw);
+
+    transform:
+        translateX(-50%);
+
+    text-align: center;
+
+    z-index: 10;
+
+}
+
+
+.material-info span {
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+}
+
+
+.material-info p {
+
+    margin-top: 14px;
+
+    font-family: var(--mono);
+
+    font-size: 10px;
+
+    line-height: 1.25;
+
+    text-transform: uppercase;
+
+}
+
+
+/* =========================================================
+   MATERIAL SCROLL
+========================================================= */
+
+.material-scroll {
+
+    position: absolute;
+
+    bottom: 16px;
+
+    left: 16px;
+
+    right: 16px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+}
+
+
+/* =========================================================
+   MATERIA / PIEZA
+========================================================= */
+
+.piece-section {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        #111
+        url("assets/images/IMG_6704.JPG")
+        center / cover
+        no-repeat;
+
+}
+
+
+/* capa oscura muy ligera */
+
+.piece-section::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, .12);
+
+    z-index: 0;
+
+}
+
+
+/* contenido encima */
+
+.piece-content {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: min(600px, 80vw);
+
+}
+
+/* =========================================================
+   SHOP EXPERIENCE
+========================================================= */
+
+.shop-section {
+
+    position: relative;
+
+    height: 400vh;
+
+    background: #111;
+
+    color: white;
+
+}
+
+
+.shop-stage {
+
+    position: sticky;
+
+    top: 0;
+
+    width: 100%;
+
+    height: 100vh;
+
+    min-height: 650px;
+
+    overflow: hidden;
+
+}
+
+
+/* =========================================================
+   GRID
+========================================================= */
+
+.shop-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+}
+
+
+.shop-grid span {
+
+    position: absolute;
+
+    top: 0;
+
+    bottom: 0;
+
+    width: 1px;
+
+    background:
+        rgba(255,255,255,.14);
+
+}
+
+
+.shop-grid span:nth-child(1) {
+
+    left: 33.333%;
+
+}
+
+
+.shop-grid span:nth-child(2) {
+
+    left: 66.666%;
+
+}
+
+
+/* =========================================================
+   NUMBERS
+========================================================= */
+
+.shop-number {
+
+    position: absolute;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%);
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+    z-index: 10;
+
+}
+
+
+.shop-number.left {
+
+    left: 9%;
+
+}
+
+
+.shop-number.right {
+
+    right: 9%;
+
+}
+
+
+/* =========================================================
+   SHOP VIDEOS
+========================================================= */
+
+.shop-video {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    overflow: hidden;
+
+    background: #222;
+
+    will-change:
+        width,
+        height,
+        transform;
+
+}
+
+
+.shop-video video {
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+}
+
+
+/* =========================================================
+   VIDEO 01
+========================================================= */
+
+.shop-video-1 {
+
+    width: 230px;
+    height: 330px;
+
+    transform:
+        translate(
+            calc(-50% - 330px),
+            -50%
+        );
+
+    z-index: 3;
+
+}
+
+
+/* =========================================================
+   VIDEO 02
+========================================================= */
+
+.shop-video-2 {
+
+    width: 230px;
+    height: 330px;
+
+    transform:
+        translate(
+            calc(-50% + 330px),
+            -50%
+        );
+
+    z-index: 4;
+
+}
+
+/* =========================================================
+   INFORMACIÓN
+========================================================= */
+
+.shop-info {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 8%;
+
+    transform:
+        translateX(-50%);
+
+    text-align: center;
+
+    z-index: 10;
+
+}
+
+
+.shop-info span {
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+}
+
+
+.shop-info h2 {
+
+    margin:
+        15px 0 20px;
+
+    font-family: var(--serif);
+
+    font-size:
+        clamp(
+            65px,
+            9vw,
+            140px
+        );
+
+    font-weight: 400;
+
+    line-height: .75;
+
+    letter-spacing: -.07em;
+
+}
+
+
+.shop-info a {
+
+    font-family: var(--mono);
+
+    font-size: 9px;
+
+}
+
+
+.shop-info a:hover {
+
+    text-decoration: underline;
+
+}
+
+
+/* =========================================================
+   SCROLL
+========================================================= */
+
+.shop-scroll {
+
+    position: absolute;
+
+    left: 16px;
+
+    right: 16px;
+
+    bottom: 16px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-family: var(--mono);
+
+    font-size: 8px;
+
+    z-index: 10;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .shop-section {
+
+        height: 350vh;
+
+    }
+
+
+    .shop-video-1 {
+
+        width: 38vw;
+
+        height: 68vw;
+
+    }
+
+
+    .shop-video-2 {
+
+        width: 38vw;
+
+        height: 68vw;
+
+    }
+
+
+    .shop-number {
+
+        display: none;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+
+    .hero {
+
+        min-height: 100svh;
+
+    }
+
+
+    .hero-nav {
+
+        height: 60px;
+
+        padding:
+            15px;
+
+        grid-template-columns:
+            1fr
+            auto;
+
+    }
+
+
+    .nav-left {
+
+        display: none;
+
+    }
+
+
+    .nav-right {
+
+        gap: 13px;
+
+    }
+
+
+    .nav-right a {
+
+        font-size: 9px;
+
+    }
+
+
+    .logo {
+
+        font-size: 22px;
+
+    }
+
+
+    .hero-title {
+
+        bottom: 17%;
+
+    }
+
+
+    .hero-title h1 {
+
+        font-size: 20vw;
+
+    }
+
+
+    .side-number {
+
+        display: none;
+
+    }
+
+
+    .material-section {
+
+        height: 350vh;
+
+    }
+
+
+    .material-video-1 {
+
+        width: 70vw;
+
+        height: 70vw;
+
+    }
+
+
+    .material-video-2 {
+
+        width: 78vw;
+
+        height: 48vw;
+
+    }
+
+
+    .material-video-3 {
+
+        width: 65vw;
+
+        height: 42vw;
+
+    }
+
+
+    .material-info {
+
+        bottom: 12%;
+
+    }
+
+
+}
+
+/* =========================================================
+   MATERIAL BACKGROUND
+========================================================= */
+
+.material-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 0;
+
+    overflow: hidden;
+
+}
+
+
+.material-background img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+
+    display: block;
+
+    transform: scale(1.02);
+
+}
+
+
+/* capa muy sutil para que los videos
+   puedan leerse sobre la fotografía */
+
+.material-background::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        rgba(235, 232, 222, .12);
+
+}
