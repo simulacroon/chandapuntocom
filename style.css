@@ -2591,3 +2591,243 @@ input {
     cursor: pointer;
   }
 }
+
+
+/* =========================================================
+   CHANDAPUNTOCOM
+   CART FUNCTIONAL
+========================================================= */
+
+
+/* EVITAR SCROLL DETRÁS DEL CART */
+
+body.cart-open {
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   EMPTY CART
+========================================================= */
+
+.cart-empty {
+
+    height: 100%;
+
+    min-height: 300px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    gap: 18px;
+
+}
+
+
+.cart-empty span {
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 9px;
+
+    opacity: .5;
+
+}
+
+
+.cart-empty p {
+
+    font-family:
+        "Space Grotesk",
+        sans-serif;
+
+    font-size: 13px;
+
+}
+
+
+.cart-empty a {
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 9px;
+
+    text-decoration: underline;
+
+}
+
+
+
+/* =========================================================
+   QUANTITY
+========================================================= */
+
+.cart-quantity {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 14px;
+
+}
+
+
+.cart-quantity-button {
+
+    width: 25px;
+
+    height: 25px;
+
+    border:
+        1px solid
+        rgba(0, 0, 0, .25);
+
+    background:
+        transparent;
+
+    color:
+        #111;
+
+    cursor:
+        pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 11px;
+
+}
+
+
+.cart-quantity-button:hover {
+
+    background:
+        #111;
+
+    color:
+        white;
+
+}
+
+
+.cart-quantity span {
+
+    min-width: 15px;
+
+    text-align: center;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 10px;
+
+}
+
+
+
+/* =========================================================
+   SUBTOTAL
+========================================================= */
+
+.cart-item-subtotal {
+
+    margin-top: 12px !important;
+
+    opacity: .6;
+
+}
+
+
+
+/* =========================================================
+   PRODUCT PAGE ADD TO CART
+========================================================= */
+
+.product-add-to-cart {
+
+    margin-top: 35px;
+
+}
+
+
+
+/* =========================================================
+   MOBILE CART BUTTON
+========================================================= */
+
+.mobile-cart-button {
+
+    border: none;
+
+    background: transparent;
+
+    color: inherit;
+
+    cursor: pointer;
+
+    font-family:
+        "Space Grotesk",
+        sans-serif;
+
+    font-size: 18px;
+
+}
+
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    .cart-drawer {
+
+        width: 100%;
+
+        max-width: none;
+
+    }
+
+
+    .cart-item {
+
+        grid-template-columns:
+            60px
+            1fr
+            auto;
+
+    }
+
+
+    .cart-item-image {
+
+        width: 60px;
+
+        height: 60px;
+
+    }
+
+}
