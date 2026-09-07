@@ -1318,3 +1318,941 @@ if (letteringCanvas) {
     drawLettering();
 
 }
+
+
+
+
+/* =========================================================
+   CHANDAPUNTOCOM
+   CART SYSTEM
+========================================================= */
+
+
+const CHANDA_CART_KEY = "chandapuntocom-cart-v1";
+
+
+/* =========================================================
+   CARGAR CARRITO
+========================================================= */
+
+let chandaCart = loadChandaCart();
+
+
+function loadChandaCart() {
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                CHANDA_CART_KEY
+            );
+
+
+        return saved
+            ? JSON.parse(saved)
+            : [];
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Error cargando carrito:",
+            error
+        );
+
+        return [];
+
+    }
+
+}
+
+
+
+/* =========================================================
+   GUARDAR
+========================================================= */
+
+function saveChandaCart() {
+
+    localStorage.setItem(
+        CHANDA_CART_KEY,
+        JSON.stringify(chandaCart)
+    );
+
+
+    renderChandaCart();
+
+}
+
+
+
+/* =========================================================
+   FORMATO PRECIO
+========================================================= */
+
+function formatChandaPrice(value) {
+
+    return new Intl.NumberFormat(
+        "es-CO",
+        {
+            style: "currency",
+            currency: "COP",
+            maximumFractionDigits: 0
+        }
+    ).format(value);
+
+}
+
+
+
+/* =========================================================
+   ABRIR CARRITO
+========================================================= */
+
+function openChandaCart() {
+
+    const drawer =
+        document.getElementById(
+            "cart-drawer"
+        );
+
+
+    const overlay =
+        document.getElementById(
+            "cart-overlay"
+        );
+
+
+    if (!drawer) {
+        return;
+    }
+
+
+    drawer.classList.add(
+        "active"
+    );
+
+
+    drawer.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    overlay?.classList.add(
+        "active"
+    );
+
+
+    document.body.classList.add(
+        "cart-open"
+    );
+
+}
+
+
+
+/* =========================================================
+   CERRAR CARRITO
+========================================================= */
+
+function closeChandaCart() {
+
+    const drawer =
+        document.getElementById(
+            "cart-drawer"
+        );
+
+
+    const overlay =
+        document.getElementById(
+            "cart-overlay"
+        );
+
+
+    drawer?.classList.remove(
+        "active"
+    );
+
+
+    drawer?.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    overlay?.classList.remove(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "cart-open"
+    );
+
+}
+
+
+
+/* =========================================================
+   OBTENER INFORMACIÓN DEL PRODUCTO
+========================================================= */
+
+function getChandaProduct(button) {
+
+
+    /*
+     * Primero buscamos el article
+     * del catálogo.
+     */
+
+    const container =
+        button.closest(
+            "[data-product-id]"
+        );
+
+
+    if (!container) {
+
+        console.warn(
+            "No se encontró información del producto."
+        );
+
+        return null;
+
+    }
+
+
+    const id =
+        container.dataset.productId ||
+        button.dataset.productId;
+
+
+    const name =
+        container.dataset.productName ||
+        `PIEZA ${id}`;
+
+
+    const price =
+        Number(
+            container.dataset.productPrice
+        );
+
+
+    /*
+     * La ficha individual tiene
+     * data-product-image.
+     *
+     * El catálogo obtiene la imagen
+     * del <img>.
+     */
+
+    const image =
+        container.dataset.productImage ||
+        container.querySelector("img")?.src ||
+        "";
+
+
+    if (
+        !id ||
+        !price
+    ) {
+
+        console.warn(
+            "Producto incompleto:",
+            {
+                id,
+                name,
+                price
+            }
+        );
+
+        return null;
+
+    }
+
+
+    return {
+
+        id: id,
+
+        name: name,
+
+        price: price,
+
+        image: image,
+
+        quantity: 1
+
+    };
+
+}
+
+
+
+/* =========================================================
+   AGREGAR PRODUCTO
+========================================================= */
+
+function addToChandaCart(product) {
+
+
+    const existing =
+        chandaCart.find(
+            item =>
+                item.id ===
+                product.id
+        );
+
+
+    if (existing) {
+
+        existing.quantity += 1;
+
+    }
+
+    else {
+
+        chandaCart.push(
+            product
+        );
+
+    }
+
+
+    saveChandaCart();
+
+    openChandaCart();
+
+}
+
+
+
+/* =========================================================
+   CAMBIAR CANTIDAD
+========================================================= */
+
+function changeChandaQuantity(
+    id,
+    amount
+) {
+
+
+    const product =
+        chandaCart.find(
+            item =>
+                item.id === id
+        );
+
+
+    if (!product) {
+        return;
+    }
+
+
+    product.quantity += amount;
+
+
+    /*
+     * Si llega a cero,
+     * eliminamos la pieza.
+     */
+
+    if (
+        product.quantity <= 0
+    ) {
+
+        chandaCart =
+            chandaCart.filter(
+                item =>
+                    item.id !== id
+            );
+
+    }
+
+
+    saveChandaCart();
+
+}
+
+
+
+/* =========================================================
+   ELIMINAR
+========================================================= */
+
+function removeFromChandaCart(id) {
+
+    chandaCart =
+        chandaCart.filter(
+            item =>
+                item.id !== id
+        );
+
+
+    saveChandaCart();
+
+}
+
+
+
+/* =========================================================
+   CONTADOR
+========================================================= */
+
+function updateChandaCartCount() {
+
+
+    const totalQuantity =
+        chandaCart.reduce(
+            (
+                total,
+                item
+            ) =>
+                total +
+                item.quantity,
+            0
+        );
+
+
+    document
+        .querySelectorAll(
+            "#cart-count"
+        )
+        .forEach(
+            element => {
+
+                element.textContent =
+                    totalQuantity;
+
+            }
+        );
+
+
+    const mobileCount =
+        document.getElementById(
+            "mobile-cart-count"
+        );
+
+
+    if (mobileCount) {
+
+        mobileCount.textContent =
+            totalQuantity;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   RENDER CARRITO
+========================================================= */
+
+function renderChandaCart() {
+
+
+    updateChandaCartCount();
+
+
+    const container =
+        document.getElementById(
+            "cart-items"
+        );
+
+
+    const totalElement =
+        document.getElementById(
+            "cart-total"
+        );
+
+
+    /*
+     * Estamos posiblemente en index.html
+     * y allí no existe el drawer.
+     */
+
+    if (!container) {
+        return;
+    }
+
+
+
+    /* =====================================================
+       CARRITO VACÍO
+    ====================================================== */
+
+    if (
+        chandaCart.length === 0
+    ) {
+
+        container.innerHTML =
+            `
+            <div class="cart-empty">
+
+                <span>
+                    00 / CART
+                </span>
+
+                <p>
+                    TU CARRITO ESTÁ VACÍO.
+                </p>
+
+                <a href="shop.html">
+                    VER COLECCIÓN →
+                </a>
+
+            </div>
+            `;
+
+
+        if (totalElement) {
+
+            totalElement.textContent =
+                formatChandaPrice(0);
+
+        }
+
+
+        return;
+
+    }
+
+
+
+    /* =====================================================
+       PRODUCTOS
+    ====================================================== */
+
+    container.innerHTML =
+        chandaCart
+            .map(
+                item => {
+
+                    const productTotal =
+                        item.price *
+                        item.quantity;
+
+
+                    return `
+                    <article
+                        class="cart-item"
+                        data-cart-id="${item.id}"
+                    >
+
+                        <div class="cart-item-image">
+
+                            ${
+                                item.image
+                                    ?
+                                    `
+                                    <img
+                                        src="${item.image}"
+                                        alt="${item.name}"
+                                    >
+                                    `
+                                    :
+                                    ""
+                            }
+
+                        </div>
+
+
+                        <div class="cart-item-info">
+
+                            <h3>
+                                ${item.name}
+                            </h3>
+
+                            <p>
+                                ${formatChandaPrice(item.price)}
+                            </p>
+
+
+                            <div class="cart-quantity">
+
+                                <button
+                                    type="button"
+                                    class="cart-quantity-button"
+                                    data-cart-action="decrease"
+                                    data-cart-id="${item.id}"
+                                    aria-label="Reducir cantidad"
+                                >
+                                    −
+                                </button>
+
+
+                                <span>
+                                    ${item.quantity}
+                                </span>
+
+
+                                <button
+                                    type="button"
+                                    class="cart-quantity-button"
+                                    data-cart-action="increase"
+                                    data-cart-id="${item.id}"
+                                    aria-label="Aumentar cantidad"
+                                >
+                                    +
+                                </button>
+
+                            </div>
+
+
+                            <p class="cart-item-subtotal">
+
+                                ${formatChandaPrice(productTotal)}
+
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="cart-item-remove"
+                            data-cart-action="remove"
+                            data-cart-id="${item.id}"
+                        >
+                            ELIMINAR
+                        </button>
+
+                    </article>
+                    `;
+
+                }
+            )
+            .join("");
+
+
+
+    /* =====================================================
+       TOTAL
+    ====================================================== */
+
+    const total =
+        chandaCart.reduce(
+            (
+                sum,
+                item
+            ) =>
+                sum +
+                (
+                    item.price *
+                    item.quantity
+                ),
+            0
+        );
+
+
+    if (totalElement) {
+
+        totalElement.textContent =
+            formatChandaPrice(
+                total
+            );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CLICK — AGREGAR
+========================================================= */
+
+document.addEventListener(
+    "click",
+    event => {
+
+
+        const addButton =
+            event.target.closest(
+                ".add-to-cart"
+            );
+
+
+        if (addButton) {
+
+
+            event.preventDefault();
+
+
+            const product =
+                getChandaProduct(
+                    addButton
+                );
+
+
+            if (product) {
+
+                addToChandaCart(
+                    product
+                );
+
+            }
+
+
+            return;
+
+        }
+
+
+
+        /* =================================================
+           BOTONES DEL CARRITO
+        ================================================== */
+
+        const cartAction =
+            event.target.closest(
+                "[data-cart-action]"
+            );
+
+
+        if (cartAction) {
+
+
+            const id =
+                cartAction.dataset.cartId;
+
+
+            const action =
+                cartAction.dataset.cartAction;
+
+
+            if (
+                action ===
+                "increase"
+            ) {
+
+                changeChandaQuantity(
+                    id,
+                    1
+                );
+
+            }
+
+
+            if (
+                action ===
+                "decrease"
+            ) {
+
+                changeChandaQuantity(
+                    id,
+                    -1
+                );
+
+            }
+
+
+            if (
+                action ===
+                "remove"
+            ) {
+
+                removeFromChandaCart(
+                    id
+                );
+
+            }
+
+
+            return;
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   BOTONES ABRIR CART
+========================================================= */
+
+const cartButton =
+    document.getElementById(
+        "cart-button"
+    );
+
+
+const mobileCartButton =
+    document.getElementById(
+        "mobile-cart-button"
+    );
+
+
+cartButton?.addEventListener(
+    "click",
+    openChandaCart
+);
+
+
+mobileCartButton?.addEventListener(
+    "click",
+    () => {
+
+        const menu =
+            document.getElementById(
+                "mobile-menu"
+            );
+
+
+        menu?.classList.remove(
+            "active"
+        );
+
+
+        openChandaCart();
+
+    }
+);
+
+
+
+/* =========================================================
+   CERRAR CART
+========================================================= */
+
+document
+    .getElementById(
+        "cart-close"
+    )
+    ?.addEventListener(
+        "click",
+        closeChandaCart
+    );
+
+
+document
+    .getElementById(
+        "cart-overlay"
+    )
+    ?.addEventListener(
+        "click",
+        closeChandaCart
+    );
+
+
+
+/* =========================================================
+   ESCAPE
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
+            closeChandaCart();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const chandaMenuButton =
+    document.getElementById(
+        "menu-button"
+    );
+
+
+const chandaMobileMenu =
+    document.getElementById(
+        "mobile-menu"
+    );
+
+
+const chandaMobileMenuClose =
+    document.getElementById(
+        "mobile-menu-close"
+    );
+
+
+chandaMenuButton?.addEventListener(
+    "click",
+    () => {
+
+        chandaMobileMenu?.classList.add(
+            "active"
+        );
+
+    }
+);
+
+
+chandaMobileMenuClose?.addEventListener(
+    "click",
+    () => {
+
+        chandaMobileMenu?.classList.remove(
+            "active"
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   CHECKOUT
+   TODAVÍA SIN PAGOS
+========================================================= */
+
+const chandaCheckoutButton =
+    document.getElementById(
+        "checkout-button"
+    );
+
+
+chandaCheckoutButton?.addEventListener(
+    "click",
+    () => {
+
+
+        if (
+            chandaCart.length === 0
+        ) {
+
+            return;
+
+        }
+
+
+        /*
+         * En la siguiente fase
+         * reemplazaremos esto por:
+         *
+         * checkout.html
+         */
+
+        console.log(
+            "Carrito listo para checkout:",
+            chandaCart
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   INICIALIZACIÓN
+========================================================= */
+
+renderChandaCart();
