@@ -1970,31 +1970,43 @@ document.addEventListener(
                 ".add-to-cart"
             );
 
-
-        if (addButton) {
-
-
-            event.preventDefault();
+ if (!addButton) {
+            return;
+        }
 
 
-            const product =
-                getChandaProduct(
-                    addButton
-                );
+        event.preventDefault();
 
 
-            if (product) {
+        console.log(
+            "CLICK AGREGAR:",
+            addButton
+        );
 
-                addToChandaCart(
-                    product
-                );
 
-            }
+        const product =
+            getChandaProduct(
+                addButton
+            );
 
+
+        if (!product) {
+
+            console.error(
+                "No fue posible agregar el producto."
+            );
 
             return;
 
         }
+
+
+        addToChandaCart(
+            product
+        );
+
+    }
+);
 
 
 
