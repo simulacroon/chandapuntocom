@@ -1,85 +1,409 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PIEZA 01 | CHANDAPUNTOCOM</title>
-  <meta name="description" content="Detalle de la pieza 01 de CHANDAPUNTOCOM." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PIEZA 01 | CHANDAPUNTOCOM</title>
+
+    <meta
+        name="description"
+        content="Detalle de la pieza 01 de CHANDAPUNTOCOM."
+    >
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
 </head>
+
+
 <body>
-  <header class="site-header">
-    <div class="nav-left">
-      <a href="index.html" class="logo">
-        CHANDA
-        <span>PUNTOCOM</span>
-      </a>
-    </div>
 
-    <nav class="main-navigation">
-      <a href="shop.html">SHOP</a>
-      <a href="index.html#proceso">PROCESO</a>
-      <a href="index.html#contacto">CONTACTO</a>
-    </nav>
 
-    <div class="nav-right">
-      <button class="menu-button" id="menu-button" aria-label="Abrir menú">
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
+    <!-- =====================================================
+         NAV
+    ====================================================== -->
 
-  <div class="mobile-menu" id="mobile-menu">
-    <button class="mobile-menu-close" id="mobile-menu-close">×</button>
-    <nav>
-      <a href="shop.html">SHOP</a>
-      <a href="index.html#proceso">PROCESO</a>
-      <a href="index.html#material">MATERIAL</a>
-      <a href="index.html#contacto">CONTACTO</a>
-    </nav>
-  </div>
+    <header class="site-header">
 
-  <main class="product-page">
-    <header class="page-header">
-      <div>
-        <p class="eyebrow">PIEZA / 01</p>
-        <h1>PIEZA 01</h1>
-      </div>
-      <a href="shop.html" class="shop-link">← VOLVER AL SHOP</a>
+
+        <div class="nav-left">
+
+            <a
+                href="index.html"
+                class="logo"
+            >
+                CHANDA
+                <span>PUNTOCOM</span>
+            </a>
+
+        </div>
+
+
+        <nav class="main-navigation">
+
+            <a href="shop.html">
+                SHOP
+            </a>
+
+            <a href="index.html#process">
+                PROCESO
+            </a>
+
+            <a href="index.html#about">
+                INFO
+            </a>
+
+        </nav>
+
+
+        <div class="nav-right">
+
+
+            <!-- CART -->
+
+            <button
+                class="cart-button"
+                id="cart-button"
+                aria-label="Abrir carrito"
+            >
+                CART
+                <span id="cart-count">0</span>
+            </button>
+
+
+            <!-- MOBILE -->
+
+            <button
+                class="menu-button"
+                id="menu-button"
+                aria-label="Abrir menú"
+            >
+
+                <span></span>
+                <span></span>
+
+            </button>
+
+
+        </div>
+
     </header>
 
-    <section class="product-layout">
-      <div class="product-gallery">
-        <img src="assets/images/product-01.svg" alt="Detalle de pieza 01" />
-      </div>
 
-      <article class="product-details">
-        <div class="product-price">$000.000 COP</div>
-        <h1>PIEZA 01</h1>
-        <p>
-          Objeto trabajado a mano con una superficie texturada y una forma que conserva la huella del proceso artesanal.
-        </p>
 
-        <div class="product-meta">
-          <div><span>Material</span><span>Metal</span></div>
-          <div><span>Medida</span><span>18 cm</span></div>
-          <div><span>Acabado</span><span>Natural</span></div>
-          <div><span>Estado</span><span>Disponible</span></div>
+    <!-- =====================================================
+         MOBILE MENU
+    ====================================================== -->
+
+    <div
+        class="mobile-menu"
+        id="mobile-menu"
+    >
+
+        <button
+            class="mobile-menu-close"
+            id="mobile-menu-close"
+            aria-label="Cerrar menú"
+        >
+            ×
+        </button>
+
+
+        <nav>
+
+            <a href="shop.html">
+                SHOP
+            </a>
+
+            <a href="index.html#process">
+                PROCESO
+            </a>
+
+            <a href="index.html#about">
+                INFO
+            </a>
+
+            <a href="index.html#contact">
+                CONTACTO
+            </a>
+
+
+            <button
+                id="mobile-cart-button"
+                class="mobile-cart-button"
+            >
+                CART
+                <span id="mobile-cart-count">0</span>
+            </button>
+
+        </nav>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         PRODUCTO
+    ====================================================== -->
+
+    <main class="product-page">
+
+
+        <header class="page-header">
+
+            <div>
+
+                <p class="eyebrow">
+                    PIEZA / 01
+                </p>
+
+                <h1>
+                    PIEZA 01
+                </h1>
+
+            </div>
+
+
+            <a
+                href="shop.html"
+                class="shop-link"
+            >
+                ← VOLVER AL SHOP
+            </a>
+
+        </header>
+
+
+
+        <section class="product-layout">
+
+
+            <!-- GALERÍA -->
+
+            <div class="product-gallery">
+
+                <img
+                    src="assets/images/product-01.svg"
+                    alt="Detalle de pieza 01"
+                >
+
+            </div>
+
+
+
+            <!-- INFORMACIÓN -->
+
+            <article
+                class="product-details"
+                data-product-id="01"
+                data-product-name="PIEZA 01"
+                data-product-price="120000"
+                data-product-image="assets/images/product-01.svg"
+            >
+
+
+                <div class="product-price">
+
+                    $120.000 COP
+
+                </div>
+
+
+                <h1>
+                    PIEZA 01
+                </h1>
+
+
+                <p>
+                    Objeto trabajado a mano con una superficie
+                    texturada y una forma que conserva la huella
+                    del proceso artesanal.
+                </p>
+
+
+
+                <div class="product-meta">
+
+                    <div>
+                        <span>Material</span>
+                        <span>Metal</span>
+                    </div>
+
+                    <div>
+                        <span>Medida</span>
+                        <span>18 cm</span>
+                    </div>
+
+                    <div>
+                        <span>Acabado</span>
+                        <span>Natural</span>
+                    </div>
+
+                    <div>
+                        <span>Estado</span>
+                        <span>Disponible</span>
+                    </div>
+
+                </div>
+
+
+
+                <!-- AGREGAR AL CARRITO -->
+
+                <button
+                    class="add-to-cart product-add-to-cart"
+                    data-product-id="01"
+                >
+                    AGREGAR AL CARRITO
+                </button>
+
+
+            </article>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================================
+         CART DRAWER
+    ====================================================== -->
+
+    <aside
+        class="cart-drawer"
+        id="cart-drawer"
+        aria-hidden="true"
+    >
+
+
+        <div class="cart-header">
+
+            <h2>
+                CARRITO
+            </h2>
+
+
+            <button
+                id="cart-close"
+                aria-label="Cerrar carrito"
+            >
+                ×
+            </button>
+
         </div>
-      </article>
-    </section>
-  </main>
 
-  <footer class="site-footer">
-    <div>© 2026 CHANDAPUNTOCOM</div>
-    <div>HECHO EN COLOMBIA</div>
-    <div><a href="index.html#top">↑ VOLVER ARRIBA</a></div>
-  </footer>
 
-  <script src="script.js"></script>
+
+        <div
+            class="cart-items"
+            id="cart-items"
+        >
+
+            <!-- JS -->
+
+        </div>
+
+
+
+        <div class="cart-footer">
+
+
+            <div class="cart-total">
+
+                <span>
+                    TOTAL
+                </span>
+
+                <strong id="cart-total">
+                    $0 COP
+                </strong>
+
+            </div>
+
+
+            <button
+                class="checkout-button"
+                id="checkout-button"
+            >
+                CONTINUAR AL PAGO →
+            </button>
+
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- OVERLAY -->
+
+    <div
+        class="cart-overlay"
+        id="cart-overlay"
+    ></div>
+
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <div>
+            © 2026 CHANDAPUNTOCOM
+        </div>
+
+        <div>
+            HECHO EN COLOMBIA
+        </div>
+
+        <div>
+
+            <a href="#top">
+                ↑ VOLVER ARRIBA
+            </a>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+
 </body>
+
 </html>
