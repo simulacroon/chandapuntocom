@@ -1501,22 +1501,21 @@ function closeChandaCart() {
 
 function getChandaProduct(button) {
 
-
     /*
-     * Primero buscamos el article
-     * del catálogo.
+     * Buscamos específicamente el contenedor
+     * del producto, NO el botón.
      */
 
     const container =
         button.closest(
-            "[data-product-id]"
+            ".product-card, .product-details"
         );
 
 
     if (!container) {
 
-        console.warn(
-            "No se encontró información del producto."
+        console.error(
+            "No se encontró el contenedor del producto."
         );
 
         return null;
@@ -1525,13 +1524,11 @@ function getChandaProduct(button) {
 
 
     const id =
-        container.dataset.productId ||
-        button.dataset.productId;
+        container.dataset.productId;
 
 
     const name =
-        container.dataset.productName ||
-        `PIEZA ${id}`;
+        container.dataset.productName;
 
 
     const price =
@@ -1540,27 +1537,31 @@ function getChandaProduct(button) {
         );
 
 
-    /*
-     * La ficha individual tiene
-     * data-product-image.
-     *
-     * El catálogo obtiene la imagen
-     * del <img>.
-     */
-
     const image =
         container.dataset.productImage ||
-        container.querySelector("img")?.src ||
+        container.querySelector("img")?.getAttribute("src") ||
         "";
+
+
+    console.log(
+        "Producto detectado:",
+        {
+            id,
+            name,
+            price,
+            image
+        }
+    );
 
 
     if (
         !id ||
+        !name ||
         !price
     ) {
 
-        console.warn(
-            "Producto incompleto:",
+        console.error(
+            "Faltan datos del producto:",
             {
                 id,
                 name,
@@ -1575,21 +1576,15 @@ function getChandaProduct(button) {
 
     return {
 
-        id: id,
-
-        name: name,
-
-        price: price,
-
-        image: image,
-
+        id,
+        name,
+        price,
+        image,
         quantity: 1
 
     };
 
 }
-
-
 
 /* =========================================================
    AGREGAR PRODUCTO
